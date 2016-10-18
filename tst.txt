@@ -1,0 +1,5 @@
+addons
+custom-addons
+odoo
+README.md
+tst.txt
