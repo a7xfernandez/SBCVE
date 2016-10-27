@@ -10,7 +10,7 @@ class TodoTask(models.Model):
     def do_toggle_done(self):
         if self.user_id != self.env.user:
             raise Exception('Only the Responsible can do this!')
-        else
+        else:
             return super(TodoTask,self).do_toggle_done()
 
     @api.multi
