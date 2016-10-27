@@ -20,4 +20,4 @@ class TodoTask(models.Model):
             ('user_id','=',False)]
         done_recs = self.search(domain)
         done_recs.write({'active':False})
-return True
+    return True
