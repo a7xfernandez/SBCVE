@@ -8,16 +8,11 @@ class TodoTask(models.Model):
 
     @api.one
     def do_toggle_done(self):
-        if self.user_id != self.env.user:
-            raise Exception('Only the Responsible can do this!')
-        else:
-            return super(TodoTask,self).do_toggle_done()
+        self.is_done = not self.is_done
+        return True        
 
     @api.multi
     def do_clear_done(self):
-        domain = [('is_done', '=', True),
-            '|', ('user_id', '=', self.env.uid),
-            ('user_id', '=', False)]
-        done_recs = self.search(domain)
-        done_recs.write({'active':False})
+        done_recs	=	self.search([('is_done',	'=',	True)])
+        done_recs.write({'active':	False})
         return True
